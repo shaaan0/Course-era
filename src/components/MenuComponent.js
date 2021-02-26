@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardImg , CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import Dishdetail from './DishdetailComponent';
 
 
 class Menu extends React.Component{
@@ -18,6 +19,8 @@ class Menu extends React.Component{
     renderDish(dish) {
         if (dish != null)
             return(
+                <div className="row">
+                <div className="col-12 col-md-5 m-1">
                 <Card>
                     <CardImg top src={dish.image} alt={dish.name} />
                     <CardBody>
@@ -25,6 +28,13 @@ class Menu extends React.Component{
                       <CardText>{dish.description}</CardText>
                     </CardBody>
                 </Card>
+                </div>
+                    <div className="col-12 col-md-5 m-1">
+                        <Dishdetail dishDetail= {dish.comments}/>
+                    </div>
+
+                </div>
+                
             );
         else
             return(
@@ -38,11 +48,10 @@ class Menu extends React.Component{
               <div key={dish.id} className="col-12 col-md-5 m-1">
                 <Card key={dish.id}
                   onClick={() => this.onDishSelect(dish)}>
-                  <CardImg src={dish.image} alt={dish.name} />
-                  <CardImgOverlay>
-                      <CardTitle>{dish.name}</CardTitle>
-                  </CardImgOverlay>
-                </Card>
+                
+                  <CardImg src={dish.image} alt={dish.name}/>
+                    <CardImgOverlay><CardTitle>{dish.name}</CardTitle></CardImgOverlay>
+                   </Card>
               </div>
             );
         });
@@ -51,10 +60,11 @@ class Menu extends React.Component{
             <div className="container">
                 <div className="row">
                     {menu}
+                    
                 </div>
-                <div className="row">
+              
                     {this.renderDish(this.state.selectedDish)}
-                </div>
+                    
             </div>
         );
     };
