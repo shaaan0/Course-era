@@ -10,36 +10,36 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 
 
-class Main extends React.Component {
-    constructor(props) {
+class Main extends React.Component{
+    constructor(props){
         super(props);
-        this.state = {
-            dishes: DISHES,
+        this.state={
+            dishes:DISHES,
             selectedDish: null
         };
     }
 
-    onDishSelect(dishId) {
-        this.setState({ selectedDish: dishId });
-
+    onDishSelect(dishId){
+        this.setState({selectedDish:dishId});
+        
     }
 
-    render() {
+    render(){
         const HomePage = () => {
-            return (
-                <Home
+            return(
+                <Home 
                 />
             );
-        }
-        return (
+          }
+        return(
             <div>
-                <Header />
+                <Header/>
                 <Switch>
-                    <Route path='/home' component={HomePage} />
-                    <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
+                    <Route path='/home' component={HomePage}/>
+                    <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}/> }/>
                     <Redirect to="/home" />
                 </Switch>
-                <Footer />
+                <Footer/>
             </div>
         );
     }
