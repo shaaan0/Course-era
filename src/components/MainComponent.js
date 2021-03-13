@@ -3,6 +3,7 @@ import Home from './HomeComponent';
 import '../App.css';
 import { DISHES } from '../shared/dishes';
 import Contact from './ContactComponent';
+import DishDetail from './DishdetailComponent';
 import Menu from './MenuComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
@@ -31,6 +32,8 @@ class Main extends React.Component{
         
     }
 
+    
+
     render(){
         const HomePage = () => {
             return(
@@ -40,12 +43,20 @@ class Main extends React.Component{
                 />
             );
           }
+        const DishWithId = ({match}) =>{
+            return (
+                <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+                comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+    
+            );      
+        };
         return(
             <div>
                 <Header/>
                 <Switch>
                     <Route path='/home' component={HomePage}/>
                     <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}/> }/>
+                    <Route path='/menu/:dishId' component={DishWithId} />
                     <Route exact path='/contactus' component={Contact} />
                     <Redirect to="/home" />
                 </Switch>
