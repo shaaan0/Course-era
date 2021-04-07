@@ -48,7 +48,7 @@ class CommentForm extends React.Component {
                                         className="form-control"
                                         validators={{ required }}
                                     >
-                                        <option>5</option>
+                                        <option defaultChecked>5</option>
                                         <option>4</option>
                                         <option>3</option>
                                         <option>2</option>
