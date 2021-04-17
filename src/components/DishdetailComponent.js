@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import {
     Card, CardText, CardImg, CardBody, CardTitle,
@@ -120,7 +121,7 @@ class CommentForm extends React.Component {
 function RenderDish({ dish }) {
     if (dish != null)
         return (
-            <div className="col-12 col-md-5 m-1">
+            <div className="col-12 col-md-8 m-1">
                 <FadeTransform
                     in
                     transformProps={{
